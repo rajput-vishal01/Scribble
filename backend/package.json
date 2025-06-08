@@ -1,10 +1,10 @@
 {
   "name": "scribble",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "npx nodemon server.js",
-    "start": "node server.js"
+    "dev": "npx nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "type": "module",
   "author": "vishal",
