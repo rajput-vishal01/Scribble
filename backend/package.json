@@ -1,0 +1,15 @@
+{
+  "name": "scribble",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "npx nodemon server.js"
+  },
+  "type": "module",
+  "author": "vishal",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
