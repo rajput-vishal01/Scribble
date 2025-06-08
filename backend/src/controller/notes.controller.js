@@ -14,7 +14,7 @@ export const getAllNotes = async (req, res) => {
 export const createNotes = async (req, res) => {
   try {
     const { title, content } = req.body;
-    const userId = req.user.id; //extracted from middleware
+    const userId = req.user._id; //extracted from middleware
 
     const newNote = new Note({ title, content, user: userId });
 
