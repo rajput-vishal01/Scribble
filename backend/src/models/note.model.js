@@ -13,7 +13,7 @@ const noteSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: false,//made false to test routes
+      required: true,
     },
   },
   { timestamps: true }
