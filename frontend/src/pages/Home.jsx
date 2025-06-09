@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar.jsx";
 import { axiosInstance } from "../lib/axios.js";
 import NotesNotFound from "../components/NotesNotFound.jsx";
 import NoteCard from "../components/NoteCard.js";
+import LoadingComponent from "../components/Loading.jsx";
 
 const Home = () => {
   const [notes, setNotes] = useState([]);
@@ -25,13 +26,13 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-
-      <div className="max-w-7xl mx-auto p-4 mt-6">
+      <div>
         {loading && (
-          <div className="text-center text-primary py-10">Loading notes...</div>
+          <div className="text-center text-primary">
+            <LoadingComponent />
+          </div>
         )}
-
+        <Navbar />
         {notes.length === 0 && <NotesNotFound />}
 
         {notes.length > 0 && (
