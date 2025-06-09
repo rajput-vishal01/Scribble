@@ -71,3 +71,40 @@ html, body {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+
+
+.masonry-layout {
+  column-count: 1;
+  column-gap: 1.5rem;
+  column-fill: balance;
+}
+
+@media (min-width: 640px) {
+  .masonry-layout {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .masonry-layout {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-layout {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1280px) {
+  .masonry-layout {
+    column-count: 5;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  display: block;
+}

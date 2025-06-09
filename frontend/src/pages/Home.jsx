@@ -1,9 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar.jsx";
+import { axiosInstance } from "../lib/axios.js";
+import NotesNotFound from "../components/NotesNotFound.jsx";
+import NoteCard from "../components/NoteCard.js";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export default Home
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const res = await axiosInstance.get("/notes/");
+        setNotes(res.data);
+        setLoading(false);
+      } catch (error) {
+        console.log("Error fetching Notes:", error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchNotes();
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+
+      <div className="max-w-7xl mx-auto p-4 mt-6">
+        {loading && (
+          <div className="text-center text-primary py-10">Loading notes...</div>
+        )}
+
+        {notes.length === 0 && <NotesNotFound />}
+
+        {notes.length > 0 && (
+          <div className="masonry-layout">
+            {notes.map((note) => (
+              <div key={note._id} className="masonry-item">
+                <NoteCard note={note} setNotes={setNotes} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default Home;
