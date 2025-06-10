@@ -4,7 +4,6 @@ import {
   createNotes,
   updateNotes,
   deleteNotes,
-  getNote,
 } from "../controller/notes.controller.js";
 import { protectRoute } from "../middleware/auth.middleware.js";
 
@@ -19,7 +18,5 @@ router.post("/", createNotes);
 router.put("/:id", updateNotes);
 
 router.delete("/:id", deleteNotes);
-
-router.get("/:id", getNote);
 
 export default router;

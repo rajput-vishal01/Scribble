@@ -83,29 +83,3 @@ export const deleteNotes = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-export const getNote = async (req, res) => {
-  try {
-    const userId = req.user.id;
-
-    const note = await Note.findById(req.params.id);
-
-    if (!note) {
-      return res.status(404).json({ message: "Note not found" });
-    }
-
-    if (note.user.toString() !== userId) {
-      return res
-        .status(403)
-        .json({ message: "Not authorized to get this note" });
-    }
-
-    res.status(200).json({
-      message: "Note fetched successfully",
-      note,
-    });
-  } catch (error) {
-    console.log("Error in getNote controller:", error.message);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
